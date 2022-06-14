@@ -1,24 +1,24 @@
 import java.io.File
 
-class SudokuFileReader(val solver : SudokuSolver) {
-    fun readFile(fileName : String) {
+class SudokuFileReader() {
+    fun readFile(fileName : String) : SudokuSolver? {
         var lines : List<String> = File(fileName).readLines()
         if (lines.last() == "") {
             lines = lines.dropLast(1)
         }
-        solver.setSudokuBoardSize(lines[0].toInt())
-        solver.setValidSudokuSymbols(lines[1].split(" "))
+        val boardSize = lines[0].toInt()
+        val symbols = lines[1].split(" ")
         val sudokuBoard = mutableListOf(listOf<String>())
         for (i in 2 until lines.size) {
             val row = lines[i].split(" ")
             if (row.size != lines[0].toInt()) {
-                println("Invalid file format")
-                return
+                return null
             }
             sudokuBoard.add(row)
         }
         //Strip empty first element
         sudokuBoard.removeFirst()
-        solver.setSudokuBoard(sudokuBoard)
+
+        return SudokuSolver(boardSize, symbols, sudokuBoard)
     }
 }
