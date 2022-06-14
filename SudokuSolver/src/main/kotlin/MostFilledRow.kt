@@ -1,0 +1,2 @@
+interface MostFilledRow : SudokuAlgorithm {
+}
