@@ -1,4 +1,4 @@
-class MostFilledRow : SudokuSolveStrategy() {
+class OnlyOnePossibility : SudokuSolveStrategy() {
     override fun findApplicableCells() {
         TODO("Not yet implemented")
     }
