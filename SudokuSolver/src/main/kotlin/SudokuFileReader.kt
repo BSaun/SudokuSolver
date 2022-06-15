@@ -11,9 +11,6 @@ class SudokuFileReader() {
         val sudokuBoard = mutableListOf(mutableListOf<Cell>())
         for (i in 2 until lines.size) {
             val row = lines[i].split(" ")
-            if (row.size != lines[0].toInt()) {
-                return null
-            }
             val cells = mutableListOf<Cell>()
             for (value in row) {
                 cells.add(Cell(value, symbols))
