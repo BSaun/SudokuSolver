@@ -1,5 +1,5 @@
-class NumberByNumberScan : SudokuSolveStrategy() {
-    override val strategyName = "NumberByNumberScan"
+class OneCellColumn : SudokuSolveStrategy() {
+    override val strategyName = "OneCellColumn"
     override fun findApplicableCells(board: List<List<Cell>>, validSymbols: List<String>): List<Cell> {
         TODO("Not yet implemented")
     }
