@@ -1,7 +1,7 @@
 import java.io.File
 
 class SudokuFileReader() {
-    fun readFile(fileName : String) : SudokuSolver? {
+    fun readFile(fileName : String) : SudokuSolver {
         var lines : List<String> = File(fileName).readLines()
         if (lines.last() == "") {
             lines = lines.dropLast(1)

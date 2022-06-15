@@ -1,9 +1,9 @@
 class NumberByNumberScan : SudokuSolveStrategy() {
-    override fun findApplicableCells(board: List<List<Cell>>): Pair<List<Cell>, Any> {
+    override fun findApplicableCells(board: List<List<Cell>>, validSymbols: List<String>): List<Cell> {
         TODO("Not yet implemented")
     }
 
-    override fun applyChanges(board: List<List<Cell>>, cells: List<Cell>, manipulationParam: Any): Boolean {
+    override fun applyChanges(board: List<List<Cell>>, validSymbols: List<String>, cells: List<Cell>): Boolean {
         TODO("Not yet implemented")
     }
 }

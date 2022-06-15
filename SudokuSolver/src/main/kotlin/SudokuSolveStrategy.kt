@@ -4,20 +4,18 @@ abstract class SudokuSolveStrategy {
         private set
     var elapsedTime : Long = 0
         private set
-    fun execute(board : List<List<Cell>>) : Boolean {
+    fun execute(board : List<List<Cell>>, validSymbols: List<String>) : Boolean {
         val startTime = System.currentTimeMillis()
-        val result = findApplicableCells(board)
-        val cells = result.first
+        val cells = findApplicableCells(board, validSymbols)
         var changeMade = false
-        val manipulationParam = result.second
         if (cells.isNotEmpty()) {
             numUses++
-            changeMade = applyChanges(board, cells, manipulationParam)
+            changeMade = applyChanges(board, validSymbols, cells)
         }
         elapsedTime += System.currentTimeMillis() - startTime
         return changeMade
     }
-    abstract fun findApplicableCells(board : List<List<Cell>>) : Pair<List<Cell>, Any>
-    abstract fun applyChanges(board : List<List<Cell>>, cells : List<Cell>, manipulationParam: Any) : Boolean
+    abstract fun findApplicableCells(board : List<List<Cell>>, validSymbols: List<String>) : List<Cell>
+    abstract fun applyChanges(board : List<List<Cell>>, validSymbols : List<String>, cells : List<Cell>) : Boolean
 
 }

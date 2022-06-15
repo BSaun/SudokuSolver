@@ -11,11 +11,11 @@ class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val boa
     }
 
     fun solveBoard() {
-        var changeMade = false
         //while the current board isn't solved, go through each strategy
         while(!checkSolved(board)) {
+            var changeMade = false
             for (strategy in solvingStrategies) {
-                val strategyCausedChange = strategy.execute(board)
+                val strategyCausedChange = strategy.execute(board, validSymbols)
                 if(!changeMade && strategyCausedChange) {
                     changeMade = true
                 }
@@ -25,7 +25,7 @@ class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val boa
                 break
             }
         }
-        //report solutions
+        //report solution
     }
 
     fun checkSolved(board : MutableList<MutableList<Cell>>) : Boolean{
