@@ -14,16 +14,22 @@ class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val boa
         //while the current board isn't solved, go through each strategy
         while(!checkSolved(board)) {
             var changeMade = false
-            for (strategy in solvingStrategies) {
-                val strategyCausedChange = strategy.execute(board, validSymbols)
-                if(!changeMade && strategyCausedChange) {
-                    changeMade = true
-                }
-            }
+//            for (strategy in solvingStrategies) {
+//                val strategyCausedChange = strategy.execute(board, validSymbols)
+//                if(!changeMade && strategyCausedChange) {
+//                    changeMade = true
+//                }
+//            }
+
+            changeMade = solvingStrategies[0].execute(board, validSymbols)
+
             //if no changes are made after each strategy is executed, no solution is found, break loop
             if (!changeMade) {
                 break
             }
+        }
+        for (strat in solvingStrategies) {
+            println(strat.strategyName + ": " + strat.numUses.toString())
         }
         //report solution
     }

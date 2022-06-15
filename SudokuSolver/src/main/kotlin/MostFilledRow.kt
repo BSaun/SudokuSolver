@@ -1,4 +1,5 @@
 class MostFilledRow : SudokuSolveStrategy() {
+    override val strategyName = "MostFilledRow"
     override fun findApplicableCells(board: List<List<Cell>>, validSymbols: List<String>): List<Cell> {
         TODO("Not yet implemented")
     }

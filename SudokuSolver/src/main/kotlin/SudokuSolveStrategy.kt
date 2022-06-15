@@ -1,5 +1,6 @@
 
 abstract class SudokuSolveStrategy {
+    abstract val strategyName : String
     var numUses = 0
         private set
     var elapsedTime : Long = 0
