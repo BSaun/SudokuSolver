@@ -1,9 +1,9 @@
 class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val board : MutableList<MutableList<Cell>>) {
     val potentialSolutions = mutableListOf<List<List<Cell>>>()
     private val solvingStrategies = listOf(
-        OnlyOnePossibility(),
-        MostFilledRow(),
-        NumberByNumberScan()
+        OneCellRemaining(),
+        OnePossibility(),
+        ScanPotential()
     )
 
     init {
