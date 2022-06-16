@@ -4,7 +4,7 @@ abstract class SudokuSolveStrategy {
     var numUses = 0
         private set
     var elapsedTime : Long = 0
-        private set
+
     fun execute(board : List<List<Cell>>, validSymbols: List<String>) : Boolean {
         val startTime = System.currentTimeMillis()
         val cells = findApplicableCells(board, validSymbols)

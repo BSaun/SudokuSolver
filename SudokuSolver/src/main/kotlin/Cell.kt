@@ -1,8 +1,8 @@
-class Cell(var value : String, var potentialValues : List<String>) {
+class Cell(var value : String, var potentialValues : MutableList<String>) {
 
     init {
         if (value != "-") {
-            potentialValues = emptyList()
+            potentialValues = mutableListOf()
         }
     }
 

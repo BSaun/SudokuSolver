@@ -13,7 +13,7 @@ class SudokuFileReader() {
             val row = lines[i].split(" ")
             val cells = mutableListOf<Cell>()
             for (value in row) {
-                cells.add(Cell(value, symbols))
+                cells.add(Cell(value, symbols.toMutableList()))
             }
             sudokuBoard.add(cells)
         }

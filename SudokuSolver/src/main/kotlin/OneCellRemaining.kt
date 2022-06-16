@@ -35,7 +35,7 @@ class OneCellRemaining : SudokuSolveStrategy() {
         for (cell in cells) {
             if (cell.potentialValues.size == 1) {
                 cell.value = cell.potentialValues[0]
-                cell.potentialValues = emptyList()
+                cell.potentialValues = mutableListOf()
                 changeMade = true
             }
         }

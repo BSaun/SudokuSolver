@@ -1,5 +1,5 @@
 class OnePossibility : SudokuSolveStrategy() {
-    override val strategyName = "OneCellColumn"
+    override val strategyName = "OnePossibility"
     override fun findApplicableCells(board: List<List<Cell>>, validSymbols: List<String>): List<Cell> {
         val cellsToReturn = mutableListOf<Cell>()
 
@@ -18,7 +18,7 @@ class OnePossibility : SudokuSolveStrategy() {
         for (cell in cells) {
             if (cell.potentialValues.size == 1) {
                 cell.value = cell.potentialValues[0]
-                cell.potentialValues = emptyList()
+                cell.potentialValues = mutableListOf()
                 changeMade = true
             }
         }
