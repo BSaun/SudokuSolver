@@ -55,14 +55,14 @@ B C D E F G H I J K L M N O P 2 3 4 5 1 7 8 9 A 6
 
 OneCellRemaining: 
 	Number of Uses: 2
-	Time Elapsed: 1 milliseconds
+	Time Elapsed: 0 milliseconds
 
 OnePossibility: 
 	Number of Uses: 5
-	Time Elapsed: 0 milliseconds
+	Time Elapsed: 2 milliseconds
 
 ScanPotential: 
 	Number of Uses: 5
 	Time Elapsed: 1 milliseconds
 
-Total solving time: 2 milliseconds
+Total solving time: 3 milliseconds

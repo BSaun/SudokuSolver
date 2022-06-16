@@ -37,7 +37,7 @@ B A 7 E C 2 4 6 G D 5 8 F 1 9 3
 
 OneCellRemaining: 
 	Number of Uses: 9
-	Time Elapsed: 2 milliseconds
+	Time Elapsed: 3 milliseconds
 
 OnePossibility: 
 	Number of Uses: 30
@@ -45,6 +45,6 @@ OnePossibility:
 
 ScanPotential: 
 	Number of Uses: 31
-	Time Elapsed: 13 milliseconds
+	Time Elapsed: 8 milliseconds
 
-Total solving time: 16 milliseconds
+Total solving time: 12 milliseconds

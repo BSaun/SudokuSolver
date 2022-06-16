@@ -31,21 +31,23 @@ class ScanPotential : SudokuSolveStrategy() {
         }
 
         for (row in board.indices) {
-            for (column in board[row].indices) {
+            for (column in board.indices) {
                 if(board[row][column].value == "-") {
                     val cellToModify = board[row][column]
-                    val startPotentialValues = cellToModify.potentialValues.toList()
+                    val startPotentialValues = cellToModify.potentialValues.toMutableList()
+                    val currentAllowedSymbols = startPotentialValues.toMutableList()
                     for(value in presentInRow[row]) {
-                        cellToModify.potentialValues.remove(value)
+                        currentAllowedSymbols.remove(value)
                     }
                     for(value in presentInColumn[column]) {
-                        cellToModify.potentialValues.remove(value)
+                        currentAllowedSymbols.remove(value)
                     }
                     for(value in presentInBlock[row / blockSize][column / blockSize]) {
-                        cellToModify.potentialValues.remove(value)
+                        currentAllowedSymbols.remove(value)
                     }
-                    if (startPotentialValues != cellToModify.potentialValues.toList()) {
+                    if (startPotentialValues != currentAllowedSymbols) {
                         cellsToReturn.add(cellToModify)
+                        cellToModify.potentialValues = currentAllowedSymbols
                     }
                 }
             }

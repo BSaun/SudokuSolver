@@ -9,7 +9,7 @@ class SudokuSolver(boardSize : Int,
     private var totalSolvingTime : Long = 0
     private var solutionString : String = ""
     private val solvingStrategies = listOf(
-        OneCellRemaining(),
+        QuickRowScan(),
         OnePossibility(),
         ScanPotential()
     )

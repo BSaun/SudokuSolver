@@ -27,10 +27,10 @@ OneCellRemaining:
 
 OnePossibility: 
 	Number of Uses: 4
-	Time Elapsed: 0 milliseconds
+	Time Elapsed: 1 milliseconds
 
 ScanPotential: 
 	Number of Uses: 5
 	Time Elapsed: 0 milliseconds
 
-Total solving time: 0 milliseconds
+Total solving time: 1 milliseconds

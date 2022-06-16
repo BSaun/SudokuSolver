@@ -1,4 +1,4 @@
-class OneCellRemaining : SudokuSolveStrategy() {
+class QuickRowScan : SudokuSolveStrategy() {
     override val strategyName = "OneCellRemaining"
     override fun findApplicableCells(board: List<List<Cell>>, validSymbols: List<String>): List<Cell> {
         val cellsToReturn = mutableListOf<Cell>()

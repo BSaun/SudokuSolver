@@ -45,6 +45,6 @@ OnePossibility:
 
 ScanPotential: 
 	Number of Uses: 6
-	Time Elapsed: 7 milliseconds
+	Time Elapsed: 5 milliseconds
 
-Total solving time: 7 milliseconds
+Total solving time: 5 milliseconds
