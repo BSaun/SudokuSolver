@@ -1,3 +1,5 @@
+import kotlin.math.sqrt
+
 class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val board : MutableList<MutableList<Cell>>) {
     val potentialSolutions = mutableListOf<List<List<Cell>>>()
     private val solvingStrategies = listOf(
@@ -7,7 +9,36 @@ class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val boa
     )
 
     init {
-//        solveBoard()
+        val sqaureRoot = sqrt(boardSize.toDouble())
+        if(sqaureRoot.toInt() - sqaureRoot != 0.0) {
+            println("Improper File Format")
+        }
+        else if(board.size != boardSize) {
+            println("Improper File Format")
+        }
+        else {
+            var columnsUniform = true
+            var allSymbolsValid = true
+            for (row in board) {
+                if (row.size != boardSize) {
+                    columnsUniform = false
+                }
+                for (cell in row) {
+                    if(validSymbols.contains(cell.value)) {
+                        allSymbolsValid = false
+                    }
+                }
+            }
+            if (columnsUniform && allSymbolsValid) {
+                solveBoard()
+            }
+            else {
+                println("Improper File Format")
+            }
+        }
+        for (row in board) {
+            println(row)
+        }
     }
 
     fun solveBoard() {
@@ -30,6 +61,10 @@ class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val boa
             println(strategy.strategyName + ": ")
             println("\tNumber of Uses: " + strategy.numUses.toString())
             println("\tTime Elapsed: " + strategy.elapsedTime)
+        }
+
+        for (row in board) {
+            println(row)
         }
         //report solution
     }
