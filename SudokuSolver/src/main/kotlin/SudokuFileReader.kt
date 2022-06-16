@@ -20,6 +20,6 @@ class SudokuFileReader() {
         //Strip empty first element
         sudokuBoard.removeFirst()
 
-        return SudokuSolver(boardSize, symbols, sudokuBoard)
+        return SudokuSolver(boardSize, symbols, sudokuBoard, fileName.replace("Input", "Output"))
     }
 }

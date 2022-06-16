@@ -1,7 +1,13 @@
+import java.io.File
 import kotlin.math.sqrt
 
-class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val board : MutableList<MutableList<Cell>>) {
+class SudokuSolver(boardSize : Int,
+                   private val validSymbols : List<String>,
+                   private val board : MutableList<MutableList<Cell>>,
+                   private var fileName : String) {
     val potentialSolutions = mutableListOf<List<List<Cell>>>()
+    private var totalSolvingTime : Long = 0
+    private var solutionString : String = ""
     private val solvingStrategies = listOf(
         OneCellRemaining(),
         OnePossibility(),
@@ -9,35 +15,37 @@ class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val boa
     )
 
     init {
-        val sqaureRoot = sqrt(boardSize.toDouble())
-        if(sqaureRoot.toInt() - sqaureRoot != 0.0) {
-            println("Improper File Format")
+        solutionString += ("$boardSize \n")
+        for (symbol in validSymbols) {
+            solutionString += ("$symbol ")
         }
-        else if(board.size != boardSize) {
-            println("Improper File Format")
+        solutionString += "\n"
+        for (row in board) {
+            for (cell in row) {
+                solutionString += (cell.value + " ")
+            }
+            solutionString += "\n"
+        }
+        val squareRoot = sqrt(boardSize.toDouble())
+        val perfectSquare = squareRoot.toInt() - squareRoot == 0.0
+        val rowsUniform = board.size == boardSize
+        var columnsUniform = true
+        var allSymbolsValid = true
+        for (row in board) {
+            if (row.size != boardSize) {
+                columnsUniform = false
+            }
+            for (cell in row) {
+                if(!validSymbols.contains(cell.value) && cell.value != "-") {
+                    allSymbolsValid = false
+                }
+            }
+        }
+        if (perfectSquare && rowsUniform && columnsUniform && allSymbolsValid) {
+            solveBoard()
         }
         else {
-            var columnsUniform = true
-            var allSymbolsValid = true
-            for (row in board) {
-                if (row.size != boardSize) {
-                    columnsUniform = false
-                }
-                for (cell in row) {
-                    if(validSymbols.contains(cell.value)) {
-                        allSymbolsValid = false
-                    }
-                }
-            }
-            if (columnsUniform && allSymbolsValid) {
-                solveBoard()
-            }
-            else {
-                println("Improper File Format")
-            }
-        }
-        for (row in board) {
-            println(row)
+            solutionString += "Invalid: Improper File Format\n"
         }
     }
 
@@ -57,16 +65,28 @@ class SudokuSolver(val boardSize : Int, val validSymbols : List<String>, val boa
                 break
             }
         }
-        for (strategy in solvingStrategies) {
-            println(strategy.strategyName + ": ")
-            println("\tNumber of Uses: " + strategy.numUses.toString())
-            println("\tTime Elapsed: " + strategy.elapsedTime)
+        if(checkSolved(board)) {
+            solutionString += ("\nSolution\n")
+        }
+        else {
+            solutionString += ("\nNo Solution Found\n")
+        }
+        for (row in board) {
+            for (cell in row) {
+                solutionString += (cell.value + " ")
+            }
+            solutionString += "\n"
         }
 
-        for (row in board) {
-            println(row)
+        for (strategy in solvingStrategies) {
+            totalSolvingTime += strategy.elapsedTime
+            solutionString += ("\n" + strategy.strategyName + ": \n")
+            solutionString += ("\tNumber of Uses: " + strategy.numUses.toString() + "\n")
+            solutionString += ("\tTime Elapsed: " + strategy.elapsedTime + " milliseconds\n")
         }
+        solutionString += ("\nTotal solving time: $totalSolvingTime milliseconds\n")
         //report solution
+        File(fileName).writeText(solutionString)
     }
 
     fun checkSolved(board : MutableList<MutableList<Cell>>) : Boolean{
