@@ -42,11 +42,13 @@ class SudokuSolver(boardSize : Int,
             }
         }
         if (perfectSquare && rowsUniform && columnsUniform && allSymbolsValid) {
+            println("Solving " + fileName)
             solveBoard()
         }
         else {
             solutionString += "Invalid: Improper File Format\n"
         }
+        File(fileName).writeText(solutionString)
     }
 
     fun solveBoard() {
@@ -85,8 +87,6 @@ class SudokuSolver(boardSize : Int,
             solutionString += ("\tTime Elapsed: " + strategy.elapsedTime + " milliseconds\n")
         }
         solutionString += ("\nTotal solving time: $totalSolvingTime milliseconds\n")
-        //report solution
-        File(fileName).writeText(solutionString)
     }
 
     fun checkSolved(board : MutableList<MutableList<Cell>>) : Boolean{

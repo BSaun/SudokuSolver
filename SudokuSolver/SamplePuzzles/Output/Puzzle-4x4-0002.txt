@@ -1,23 +1,26 @@
-4
-A B C D
-B - C A
-A C - D
-C A D -
-- B A C
+4 
+A B C D 
+B - C A 
+A C - D 
+C A D - 
+- B A C 
 
+Solution
+B D C A 
+A C B D 
+C A D B 
+D B A C 
 
-Solved
-B D C A
-A C B D
-C A D B
-D B A C
+OneCellRemaining: 
+	Number of Uses: 1
+	Time Elapsed: 0 milliseconds
 
+OnePossibility: 
+	Number of Uses: 0
+	Time Elapsed: 0 milliseconds
 
-Total time: 00:00:00.0120000
+ScanPotential: 
+	Number of Uses: 0
+	Time Elapsed: 0 milliseconds
 
-Strategy             Uses       Time
-Apply Changes        2          00:00:00.0100000
-Only One Possibility 1          00:00:00
-Only One Place       0          00:00:00
-Twins                0          00:00:00
-Guess                0          00:00:00
+Total solving time: 0 milliseconds
