@@ -4,8 +4,7 @@ import kotlin.math.sqrt
 class SudokuSolver(boardSize : Int,
                    private val validSymbols : List<String>,
                    private val board : MutableList<MutableList<Cell>>,
-                   private var fileName : String) {
-    val potentialSolutions = mutableListOf<List<List<Cell>>>()
+                   fileName : String) {
     private var totalSolvingTime : Long = 0
     private var solutionString : String = ""
     private val solvingStrategies = listOf(
@@ -15,6 +14,7 @@ class SudokuSolver(boardSize : Int,
     )
 
     init {
+        println(fileName)
         solutionString += ("$boardSize \n")
         for (symbol in validSymbols) {
             solutionString += ("$symbol ")
@@ -42,7 +42,6 @@ class SudokuSolver(boardSize : Int,
             }
         }
         if (perfectSquare && rowsUniform && columnsUniform && allSymbolsValid) {
-            println("Solving " + fileName)
             solveBoard()
         }
         else {
@@ -51,9 +50,9 @@ class SudokuSolver(boardSize : Int,
         File(fileName).writeText(solutionString)
     }
 
-    fun solveBoard() {
+    private fun solveBoard() {
         //while the current board isn't solved, go through each strategy
-        while(!checkSolved(board)) {
+        while(!checkSolved()) {
             var changeMade = false
             for (strategy in solvingStrategies) {
                 val strategyCausedChange = strategy.execute(board, validSymbols)
@@ -67,11 +66,10 @@ class SudokuSolver(boardSize : Int,
                 break
             }
         }
-        if(checkSolved(board)) {
-            solutionString += ("\nSolution\n")
-        }
-        else {
-            solutionString += ("\nNo Solution Found\n")
+        solutionString += if(checkSolved()) {
+            ("\nSolution\n")
+        } else {
+            ("\nNo Solution Found\n")
         }
         for (row in board) {
             for (cell in row) {
@@ -89,7 +87,7 @@ class SudokuSolver(boardSize : Int,
         solutionString += ("\nTotal solving time: $totalSolvingTime milliseconds\n")
     }
 
-    fun checkSolved(board : MutableList<MutableList<Cell>>) : Boolean{
+    private fun checkSolved() : Boolean{
         for (row in board) {
             val remainingSymbols = validSymbols.toMutableList()
             for (cell in row) {
@@ -111,4 +109,5 @@ class SudokuSolver(boardSize : Int,
         }
         return true
     }
+
 }

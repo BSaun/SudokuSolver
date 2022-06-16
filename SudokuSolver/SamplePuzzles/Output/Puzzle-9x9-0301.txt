@@ -23,7 +23,7 @@ No Solution Found
 
 OneCellRemaining: 
 	Number of Uses: 0
-	Time Elapsed: 1 milliseconds
+	Time Elapsed: 0 milliseconds
 
 OnePossibility: 
 	Number of Uses: 0
@@ -33,4 +33,4 @@ ScanPotential:
 	Number of Uses: 1
 	Time Elapsed: 0 milliseconds
 
-Total solving time: 1 milliseconds
+Total solving time: 0 milliseconds

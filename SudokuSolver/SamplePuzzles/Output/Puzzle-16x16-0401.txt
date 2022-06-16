@@ -37,11 +37,11 @@ B F E 2 - 8 3 - - 1 - - - 7 - -
 
 OneCellRemaining: 
 	Number of Uses: 0
-	Time Elapsed: 0 milliseconds
+	Time Elapsed: 1 milliseconds
 
 OnePossibility: 
 	Number of Uses: 5
-	Time Elapsed: 1 milliseconds
+	Time Elapsed: 0 milliseconds
 
 ScanPotential: 
 	Number of Uses: 6
